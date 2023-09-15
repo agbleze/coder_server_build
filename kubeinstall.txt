@@ -1,0 +1,35 @@
+eksctl create cluster \
+--name ${CLUSTER_NAME} \
+--version 1.25 \
+--region ${CLUSTER_REGION} \
+--nodegroup-name linux-nodes \
+--node-type m5.xlarge \
+--nodes 5 \
+--nodes-min 5 \
+--nodes-max 10 \
+--managed \
+--with-oidc
+
+
+
+eksctl create cluster \
+--name ${CLUSTER_NAME} \
+--version 1.25 \
+--region ${CLUSTER_REGION} \
+
+
+--nodes 5 \
+--nodes-min 5 \
+--nodes-max 10 \
+--managed \
+--with-oidc
+
+eksctl utils associate-iam-oidc-provider --cluster ${CLUSTER_NAME} \
+--region ${CLUSTER_REGION} --approve
+
+
+make port-forward IP_ADDRESS=0.0.0.0
+
+
+
+
